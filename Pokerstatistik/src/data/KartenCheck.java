@@ -18,7 +18,8 @@ public class KartenCheck {
 	 * straﬂe 
 	 * paar 
 	 * triple
-	 * poker
+	 * poker (vierling)
+	 * Rojal Flush
 	 * 
 	 * karten[5] = {15, 46, 38, 21, 3}; i = 0; j = 1; 15 % 13 == 46 % 13 | 2 == 7 i
 	 * = 0; j = 2; 15 % 13 == 38 % 13 | 2 == 12 i = 0; j = 3; 15 % 13 == 21 % 13 | 2
@@ -51,6 +52,25 @@ public class KartenCheck {
 			}
 		}
 
+		return false;
+	}
+	
+	
+	public static boolean checkPoker(int[] karten) {
+		
+		
+		for (int i = 0; i < (karten.length - 1); i++) {
+			for (int j = i + 1; j < karten.length; j++) {
+				for (int k = j + 1; k < karten.length; k++) {
+					for (int l = k + 1; l < karten.length; l++) {
+						if ((karten[i] % 13) == (karten[j] % 13) && (karten[j] % 13) == (karten[k] % 13) && (karten[k] % 13) == (karten[l] % 13)) {
+							return true;
+						}
+					}
+				}
+			}
+		}
+		
 		return false;
 	}
 }
