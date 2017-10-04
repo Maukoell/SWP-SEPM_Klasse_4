@@ -15,9 +15,11 @@ public class Kartenzaehler {
 	}
 
 	public void print(int[] arr) {
+		System.out.println("Folgende Karten wurden gezogen: ");
 		for (int i = 0; i < arr.length; i++) {
-			System.out.println(arr[i]);
+			System.out.print((echteKartennummer(arr[i])) + " ");
 		}
+		System.out.println();
 	}
 	
 /*	public void karteZiehen() {

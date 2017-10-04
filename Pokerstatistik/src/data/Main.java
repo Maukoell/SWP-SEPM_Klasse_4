@@ -17,12 +17,30 @@ public class Main {
 		}
 	}
 	
-	public void check() {
-		
+	public static void check(int[] karten) {
+		if (KartenCheck.checkEinPaar(karten)) {
+			System.out.println("Es ist ein Paar vorhanden.");
+		}
+		if (KartenCheck.checkTriple(karten)) {
+			System.out.println("Es ist ein Tripple vorhanden.");
+		}
+		if (KartenCheck.checkPoker(karten)) {
+			System.out.println("Es ist ein Poker vorhanden.");
+		}
+		if (KartenCheck.checkStrasse(karten)) {
+			System.out.println("Es ist eine Straﬂe vorhanden.");
+		}
+		if (KartenCheck.checkAlleFarbenGleich(karten)) {
+			System.out.println("Alle Farben sind gleich.");
+		}
 	}
 	
 	public static void main(String[] args) {
-		Main m = new Main();
-		m.ziehen();
+		Kartenzaehler zaehler = new Kartenzaehler();
+		int[] gezogeneKarten = zaehler.ziehen(5, 52);
+		int[] test = {1,2,3,4,5};
+		zaehler.print(test);
+		check(test);
+		
 	}
 }

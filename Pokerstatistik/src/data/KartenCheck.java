@@ -1,5 +1,12 @@
 package data;
 
+import java.util.Arrays;
+
+/**
+ * https://goo.gl/6nXbYL
+ * @author Mauricio Köll
+ *
+ */
 public class KartenCheck {
 
 	public static boolean checkEinPaar(int[] karten) {
@@ -70,6 +77,26 @@ public class KartenCheck {
 				}
 			}
 		}
+		
+		return false;
+	}
+	
+	public static boolean checkStrasse(int[] karten) {
+		
+		Arrays.sort(karten);
+		
+		
+			if((karten[0] + 1) == karten[1]) {
+				if((karten[1] + 1) == karten[2]) {
+					if((karten[2] + 1) == karten[3]) {
+						if((karten[3] + 1) == karten[4]) {
+							return true;
+						}
+					}
+				}
+			}
+		
+		
 		
 		return false;
 	}
