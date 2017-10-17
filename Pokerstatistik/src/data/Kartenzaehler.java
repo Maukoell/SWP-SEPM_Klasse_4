@@ -47,9 +47,6 @@ public class Kartenzaehler {
 		return gezogeneKarten;
 	}	
 	
-	
-	
-	
 	/**
 	 * 
 	 * @param anzahl soviele karten möchte ich ziehen
