@@ -9,11 +9,14 @@ import java.util.Arrays;
  *
  */
 public class KartenCheck {
-
+	private static int kartenAnzahl = 13;
+	private static Kartenzaehler zaehler = new Kartenzaehler();
+	
+	
 	public static boolean checkEinPaar(int[] karten) {
 		for (int i = 0; i < (karten.length - 1); i++) {
 			for (int j = i + 1; j < karten.length; j++) {
-				if ((karten[i] % 13) == (karten[j] % 13)) {
+				if ((zaehler.echteKartennummer(karten[i])) == (zaehler.echteKartennummer(karten[j]))) {
 					return true;
 				}
 			}
@@ -36,8 +39,8 @@ public class KartenCheck {
 
 	public static boolean checkAlleFarbenGleich(int[] karten) {
 
-		if ((karten[0] / 13) == (karten[1] / 13) && (karten[1] / 13) == (karten[2] / 13)
-				&& (karten[2] / 13) == (karten[3] / 13) && (karten[3] / 13) == (karten[4] / 13)) {
+		if ((zaehler.findFarbe(karten[0])) == (zaehler.findFarbe(karten[1])) && (zaehler.findFarbe(karten[1])) == (zaehler.findFarbe(karten[2]))
+				&& (zaehler.findFarbe(karten[2])) == (zaehler.findFarbe(karten[3])) && (zaehler.findFarbe(karten[3])) == (zaehler.findFarbe(karten[4]))) {
 			return true;
 		}
 		return false;
@@ -48,7 +51,8 @@ public class KartenCheck {
 		for (int i = 0; i < (karten.length - 1); i++) {
 			for (int j = i + 1; j < karten.length; j++) {
 				for (int k = j + 1; k < karten.length; k++) {
-					if ((karten[i] % 13) == (karten[j] % 13) && (karten[j] % 13) == (karten[k] % 13)) {
+					if (zaehler.echteKartennummer(karten[i]) == zaehler.echteKartennummer(karten[j]) && 
+							zaehler.echteKartennummer(karten[j]) == zaehler.echteKartennummer(karten[k])) {
 						return true;
 					}
 				}
@@ -64,8 +68,9 @@ public class KartenCheck {
 			for (int j = i + 1; j < karten.length; j++) {
 				for (int k = j + 1; k < karten.length; k++) {
 					for (int l = k + 1; l < karten.length; l++) {
-						if ((karten[i] % 13) == (karten[j] % 13) && (karten[j] % 13) == (karten[k] % 13)
-								&& (karten[k] % 13) == (karten[l] % 13)) {
+						if (zaehler.echteKartennummer(karten[i]) == zaehler.echteKartennummer(karten[j]) &&
+								zaehler.echteKartennummer(karten[j]) == zaehler.echteKartennummer(karten[k]) && 
+								zaehler.echteKartennummer(karten[k]) == zaehler.echteKartennummer(karten[l])) {
 							return true;
 						}
 					}
