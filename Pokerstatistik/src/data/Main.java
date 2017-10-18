@@ -33,6 +33,15 @@ public class Main {
 		if (KartenCheck.checkAlleFarbenGleich(karten)) {
 			System.out.println("Alle Farben sind gleich.");
 		}
+		if (KartenCheck.checkFullHouse(karten)) {
+			System.out.println("Ein Full House ist vorhanden.");
+		}
+		if (KartenCheck.checkRoyalFlush(karten)) {
+			System.out.println("Ein Royal Flush ist vorhanden.");
+		}
+		if (KartenCheck.checkTwoPair(karten)) {
+			System.out.println("Es sind zwei Paare vorhanden.");
+		}
 	}
 	
 	public static void main(String[] args) {
