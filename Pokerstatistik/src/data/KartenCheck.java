@@ -48,14 +48,10 @@ public class KartenCheck {
 
 	public static boolean checkTriple(int[] karten) {
 
-		for (int i = 0; i < (karten.length - 1); i++) {
-			for (int j = i + 1; j < karten.length; j++) {
-				for (int k = j + 1; k < karten.length; k++) {
-					if (zaehler.echteKartennummer(karten[i]) == zaehler.echteKartennummer(karten[j]) && 
-							zaehler.echteKartennummer(karten[j]) == zaehler.echteKartennummer(karten[k])) {
+		for (int i = 0; i < (karten.length - 2); i++) {
+					if (zaehler.echteKartennummer(karten[i]) == zaehler.echteKartennummer(karten[i + 1]) && 
+							zaehler.echteKartennummer(karten[i + 1]) == zaehler.echteKartennummer(karten[i + 2])) {
 						return true;
-					}
-				}
 			}
 		}
 
@@ -64,17 +60,11 @@ public class KartenCheck {
 
 	public static boolean checkPoker(int[] karten) {
 
-		for (int i = 0; i < (karten.length - 1); i++) {
-			for (int j = i + 1; j < karten.length; j++) {
-				for (int k = j + 1; k < karten.length; k++) {
-					for (int l = k + 1; l < karten.length; l++) {
-						if (zaehler.echteKartennummer(karten[i]) == zaehler.echteKartennummer(karten[j]) &&
-								zaehler.echteKartennummer(karten[j]) == zaehler.echteKartennummer(karten[k]) && 
-								zaehler.echteKartennummer(karten[k]) == zaehler.echteKartennummer(karten[l])) {
+		for (int i = 0; i < (karten.length - 3); i++) {
+						if (zaehler.echteKartennummer(karten[i]) == zaehler.echteKartennummer(karten[i + 1]) &&
+								zaehler.echteKartennummer(karten[i + 1]) == zaehler.echteKartennummer(karten[i + 2]) && 
+								zaehler.echteKartennummer(karten[i + 2]) == zaehler.echteKartennummer(karten[i + 3])) {
 							return true;
-						}
-					}
-				}
 			}
 		}
 
@@ -82,13 +72,23 @@ public class KartenCheck {
 	}
 
 	public static boolean checkStrasse(int[] karten) {
-
-		Arrays.sort(karten);
-
-		if ((karten[0] + 1) == karten[1]) {
-			if ((karten[1] + 1) == karten[2]) {
-				if ((karten[2] + 1) == karten[3]) {
-					if ((karten[3] + 1) == karten[4]) {
+		Kartenzaehler k = new Kartenzaehler();
+//		int[] karten2 = karten1;
+//		int[] karten = karten2;
+//		for (int i = 0; i < karten.length; i++) {
+//			if (karten[i] % 13 == 0) {
+//				karten[i] = 13;
+//			} else {
+//				karten[i] = karten[i] % 13;
+//			}
+//		}
+//		Arrays.sort(karten);
+//		System.out.println(k.echteKartennummer(karten[0] + 1));
+//		System.out.println(k.echteKartennummer(karten[1]));
+		if ((k.echteKartennummer(karten[0]) + 1) == k.echteKartennummer(karten[1])) {
+			if ((k.echteKartennummer(karten[1]) + 1) == k.echteKartennummer(karten[2])) {
+				if ((k.echteKartennummer(karten[2]) + 1) == k.echteKartennummer(karten[3])) {
+					if ((k.echteKartennummer(karten[3]) + 1) == k.echteKartennummer(karten[4])) {
 						return true;
 					}
 				}
@@ -97,7 +97,7 @@ public class KartenCheck {
 
 		return false;
 	}
-
+	
 	public static boolean checkStraightFlush(int[] karten) {
 
 		if (checkAlleFarbenGleich(karten) && checkStrasse(karten)) {
@@ -109,7 +109,8 @@ public class KartenCheck {
 
 	public static boolean checkRoyalFlush(int[] karten) {
 		Kartenzaehler k = new Kartenzaehler();
-		Arrays.sort(karten);
+//		<>karten1 = karten;
+//		Arrays.sort(karten);
 
 		if (k.echteKartennummer(karten[0]) == 9) {
 			if (k.echteKartennummer(karten[1]) == 10) {

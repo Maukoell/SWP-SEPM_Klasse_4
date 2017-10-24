@@ -40,7 +40,6 @@ public class Kartenzaehler {
 		for (int i = 1; i < vorhandeneKarten.length; i++) {
 			vorhandeneKarten[i - 1] = i;
 		}
-		System.out.println();
 	}
 
 	public int[] getGezogeneKarten() {
@@ -85,6 +84,9 @@ public class Kartenzaehler {
 	 */
 	
 	public int echteKartennummer(int kartenNummer) {
+		if (kartenNummer % 13 == 0) {
+			return 13;
+		}
 		return kartenNummer % anzahlKartenEinerFarbe ;
 	}
 	/*49 % 13 = 10
