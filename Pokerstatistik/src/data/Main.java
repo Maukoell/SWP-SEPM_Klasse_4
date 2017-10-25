@@ -5,16 +5,16 @@ import java.util.Arrays;
 public class Main {
 
 	private Kartenzaehler k = new Kartenzaehler();
-	private int einPaar = 0;
-	private int zweiPaar = 0;
-	private int tripple = 0;
-	private int poker = 0;
-	private int fullHouse = 0;
-	private int flush = 0;
-	private int royalFlush = 0;
-	private int straightFlush = 0;
-	private int straight = 0;
-	private static int[] test = {1,1,1,2,3};
+	private double einPaar = 0;
+	private double zweiPaar = 0;
+	private double tripple = 0;
+	private double poker = 0;
+	private double fullHouse = 0;
+	private double flush = 0;
+	private double royalFlush = 0;
+	private double straightFlush = 0;
+	private double straight = 0;
+//	private static int[] test = {1,1,1,1,3};
 	
 	
 
@@ -54,18 +54,27 @@ public class Main {
 			}
 		}
 		
-		System.out.println("Es wurden 1000 mal Karten gezogen.");
+		System.out.println("Es wurden 1.000.000 mal Karten gezogen.");
 		System.out.println("Davon waren folgende Kombinationen enthalten:");
 		System.out.println();
-		System.out.println("Ein Paar: " + einPaar);
-		System.out.println("Zwei Paar: " + zweiPaar);
-		System.out.println("Tripple: " + tripple);
-		System.out.println("Poker: " + poker);
-		System.out.println("Full House: " + fullHouse);
-		System.out.println("Royal Flush:" + royalFlush);
-		System.out.println("Straight Flush:" + straightFlush);
-		System.out.println("Flush: " + flush);
-		System.out.println("Straight: " + straight);
+		System.out.printf("Ein Paar: \t\t%d Mal vorgekommen. \t Dies entspricht %.4f%%", (int) einPaar, ((einPaar/1000000) * 100));
+		System.out.println();
+		System.out.printf("Zwei Paar: \t\t%d Mal vorgekommen. \t\t Dies entspricht %.4f%%", (int) zweiPaar, ((zweiPaar/1000000) * 100));
+		System.out.println();
+		System.out.printf("Tripple: \t\t%d Mal vorgekommen. \t\t Dies entspricht %.4f%%", (int) tripple, ((tripple/1000000) * 100));
+		System.out.println();
+		System.out.printf("Poker: \t\t\t%d Mal vorgekommen. \t\t Dies entspricht %.4f%%", (int) poker, ((poker/1000000) * 100));
+		System.out.println();
+		System.out.printf("Full House: \t\t%d Mal vorgekommen. \t\t Dies entspricht %.4f%%", (int) fullHouse, ((fullHouse/1000000) * 100));
+		System.out.println();
+		System.out.printf("Royal Flush: \t\t%d Mal vorgekommen. \t\t Dies entspricht %.4f%%", (int) royalFlush, ((royalFlush/1000000) * 100));
+		System.out.println();
+		System.out.printf("Straight Flush: \t%d Mal vorgekommen. \t\t Dies entspricht %.4f%%", (int) straightFlush, ((straightFlush/1000000) * 100));
+		System.out.println();
+		System.out.printf("Flush: \t\t\t%d Mal vorgekommen. \t\t Dies entspricht %.4f%%", (int) flush, ((flush/1000000) * 100));
+		System.out.println();
+		System.out.printf("Straight: \t\t%d Mal vorgekommen. \t\t Dies entspricht %.4f%%", (int) straight, ((straight/1000000) * 100));
+		System.out.println();
 		
 	}
 	
@@ -100,13 +109,13 @@ public class Main {
 	}
 	
 	public static void main(String[] args) {
-		Kartenzaehler zaehler = new Kartenzaehler();
-		int[] gezogeneKarten = zaehler.ziehen(5, 52);
-		Arrays.sort(gezogeneKarten);
-		zaehler.print(test);
-		check(test);
-//		Main m = new Main();
-//		m.ziehen();
+//		Kartenzaehler zaehler = new Kartenzaehler();
+//		int[] gezogeneKarten = zaehler.ziehen(5, 52);
+//		Arrays.sort(gezogeneKarten);
+//		zaehler.print(test);
+//		check(test);
+		Main m = new Main();
+		m.ziehen();
 		
 		/*
 		 * Ein Paar funktioniert
