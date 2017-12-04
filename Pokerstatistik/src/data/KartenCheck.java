@@ -1,7 +1,5 @@
 package data;
 
-import java.util.Arrays;
-
 /**
  * https://goo.gl/6nXbYL
  * 
@@ -12,6 +10,20 @@ public class KartenCheck {
 	private static int kartenAnzahl = 13;
 	private static Kartenzaehler zaehler = new Kartenzaehler();
 	
+	public static boolean checkMoeglich(int[] karten) {
+		int zaehler = 0;
+		for (int i = 0; i < karten.length; i++) {
+			if (karten[0] == karten[i]) {
+				zaehler++;
+			}
+		}
+		
+		if (zaehler == 5) {
+			return false;
+		}else {
+			return true;
+		}
+	}
 	
 	public static boolean checkEinPaar(int[] karten) {
 		for (int i = 0; i < (karten.length - 1); i++) {

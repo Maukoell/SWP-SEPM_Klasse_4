@@ -1,25 +1,32 @@
 package data;
 
 import java.util.Arrays;
+import java.util.Scanner;
+
+import db.SQLiteConnection;
 
 public class Main {
 
 	private Kartenzaehler k = new Kartenzaehler();
-	private double einPaar = 0;
-	private double zweiPaar = 0;
-	private double tripple = 0;
-	private double poker = 0;
-	private double fullHouse = 0;
-	private double flush = 0;
-	private double royalFlush = 0;
-	private double straightFlush = 0;
-	private double straight = 0;
+	private static double einPaar = 0;
+	private static double zweiPaar = 0;
+	private static double tripple = 0;
+	private static double poker = 0;
+	private static double fullHouse = 0;
+	private static double flush = 0;
+	private static double royalFlush = 0;
+	private static double straightFlush = 0;
+	private static double straight = 0;
+	private static int registrationDate = 0;
+	private static int beginDateTimeOfTest = 0;
+	private static int endDateTimeOfTest = 0;
 //	private static int[] test = {1,1,1,1,3};
 	
 	
 
 	
 	public void ziehen() {
+		beginDateTimeOfTest = (int) (System.currentTimeMillis() / 1000L);
 		for (int i = 0; i < 999999; i++) {
 			k.ziehvorgang();
 			int[] gezogeneKarten = k.ziehen(5, 52);
@@ -76,6 +83,8 @@ public class Main {
 		System.out.printf("Straight: \t\t%d Mal vorgekommen. \t\t Dies entspricht %.4f%%", (int) straight, ((straight/1000000) * 100));
 		System.out.println();
 		
+		endDateTimeOfTest = (int) (System.currentTimeMillis() / 1000L);
+		
 	}
 	
 	public static void check(int[] karten) {
@@ -114,8 +123,22 @@ public class Main {
 //		Arrays.sort(gezogeneKarten);
 //		zaehler.print(test);
 //		check(test);
+		int userId = SQLiteConnection.getHighestUserId();
+		String name = "";
+		Scanner s = new Scanner(System.in);
+		System.out.println("Bitte geben Sie ihren Namen ein:");
+		name = s.next();
+		System.out.println("Sie werden als " + name + " regestriert.");
+		System.out.println();
+		registrationDate = (int) (System.currentTimeMillis() / 1000L);
 		Main m = new Main();
 		m.ziehen();
+		SQLiteConnection.insertUser(userId+1, name, registrationDate);
+		SQLiteConnection.insertResults(beginDateTimeOfTest, endDateTimeOfTest, userId+1, (int) einPaar,
+				(int) tripple, (int) poker, (int) zweiPaar, (int) flush, (int) straightFlush, (int) royalFlush, (int) fullHouse);
+		
+		
+		
 		
 		/*
 		 * Ein Paar funktioniert
