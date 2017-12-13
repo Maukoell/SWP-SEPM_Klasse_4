@@ -8,13 +8,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class SQLiteConnection {
-	private static String url = "jdbc:sqlite:C:/Users/Skeiker123/Desktop/Schule/4. Klasse/SWP/SQLite Driver/Pokerprojekt/testDB.db";
+	private static String url = "jdbc:sqlite:C:/Users/user/Desktop/testDB.db";
 
 	public static Connection getConnection() {
 		Connection conn = null;
 
 		try {
-			String url = "jdbc:sqlite:C:/Users/Skeiker123/Desktop/Schule/4. Klasse/SWP/SQLite Driver/Pokerprojekt/testDB.db";
+			String url = "jdbc:sqlite:jdbc:sqlite:C:/Users/user/Desktop/testDB.db";
 
 			conn = DriverManager.getConnection(url);
 
@@ -35,14 +35,25 @@ public class SQLiteConnection {
 
 	public static void createTables() {
 
-		String sql1 = "create table if not exists User (\n" + "	userID int primary key, \n"
-				+ "	userName text not null, \n" + "	userRegistrationDate int not null \n" + ");";
+		String sql1 = "create table if not exists User (\n" 
+				+ "	userID int primary key, \n"
+				+ "	userName text not null, \n"
+				+ "	userRegistrationDate int not null \n" 
+				+ ");";
 
-		String sql2 = "create table if not exists Results(\r\n" + "	beginDateTimeOfTest int primary key,\r\n"
-				+ "	endDateTimeOfTest int ,\r\n" + "	userID int not null,\r\n" + "	nrPairs int not null,\r\n"
-				+ "	nrTriples int not null,\r\n" + "	nrPoker int not null,\r\n" + "	nrTwoPairs int not null,\r\n"
-				+ "	nrFlush int not null,\r\n" + "	nrStraightFlush int not null,\r\n"
-				+ "	nrRoyalFlush int not null,\r\n" + "	nrFullHouse int not null	\r\n" + ")";
+		String sql2 = "create table if not exists Results(\r\n" 
+				+ "	beginDateTimeOfTest int primary key,\r\n"
+				+ "	endDateTimeOfTest int ,\r\n" 
+				+ "	userID int not null,\r\n" 
+				+ "	nrPairs int not null,\r\n"
+				+ "	nrTriples int not null,\r\n" 
+				+ "	nrPoker int not null,\r\n" 
+				+ "	nrTwoPairs int not null,\r\n"
+				+ "	nrFlush int not null,\r\n" 
+				+ "	nrStraightFlush int not null,\r\n"
+				+ "	nrRoyalFlush int not null,\r\n" 
+				+ "	nrFullHouse int not null	\r\n" 
+				+ ")";
 
 		try (Connection conn = DriverManager.getConnection(url); Statement stmt = conn.createStatement()) {
 			// create a new table
@@ -93,7 +104,7 @@ public class SQLiteConnection {
 			// loop through the result set
 			while (rs.next()) {
 				userId = rs.getInt(1);
-				System.out.println("UserID aus Datenbank entnommen");
+			//	System.out.println("UserID aus Datenbank entnommen");
 			}
 			return userId;
 		} catch (SQLException e) {

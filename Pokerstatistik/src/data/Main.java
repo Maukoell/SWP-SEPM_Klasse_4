@@ -4,7 +4,11 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 import db.SQLiteConnection;
-
+/**
+ *  Pfad für Datenbank in SQLite Klasse
+ * @author user
+ *
+ */
 public class Main {
 
 	private Kartenzaehler k = new Kartenzaehler();
@@ -123,6 +127,7 @@ public class Main {
 //		Arrays.sort(gezogeneKarten);
 //		zaehler.print(test);
 //		check(test);
+		SQLiteConnection.createTables();
 		int userId = SQLiteConnection.getHighestUserId();
 		String name = "";
 		Scanner s = new Scanner(System.in);

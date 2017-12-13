@@ -7,7 +7,6 @@ package data;
  *
  */
 public class KartenCheck {
-	private static int kartenAnzahl = 13;
 	private static Kartenzaehler zaehler = new Kartenzaehler();
 	
 	public static boolean checkMoeglich(int[] karten) {
