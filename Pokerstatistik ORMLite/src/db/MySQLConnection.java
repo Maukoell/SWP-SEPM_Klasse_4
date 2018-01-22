@@ -23,7 +23,7 @@ public class MySQLConnection {
 		try {
 			c = new JdbcConnectionSource(url);
 
-			//MySQLConnection.setupDatabase(c);
+			MySQLConnection.setupDatabase(c);
 
 			MySQLConnection.insertIntoDB(c, u, r);
 

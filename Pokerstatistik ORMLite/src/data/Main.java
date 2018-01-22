@@ -7,8 +7,10 @@ import java.util.Scanner;
 import db.MySQLConnection;
 import db.Results;
 import db.Users;
+
 /**
- *  Pfad für Datenbank in SQLite Klasse
+ * Pfad für Datenbank in SQLite Klasse
+ * 
  * @author user
  *
  */
@@ -28,18 +30,19 @@ public class Main {
 	private static int beginDateTimeOfTest = 0;
 	private static int endDateTimeOfTest = 0;
 
-	
 	public void ziehen() {
 		beginDateTimeOfTest = (int) (System.currentTimeMillis() / 1000L);
 		for (int i = 0; i < 999999; i++) {
 			k.ziehvorgang();
 			int[] gezogeneKarten = k.ziehen(5, 52);
 			Arrays.sort(gezogeneKarten);
-			
-			if (KartenCheck.checkEinPaar(gezogeneKarten) && !KartenCheck.checkTriple(gezogeneKarten) && !KartenCheck.checkTwoPair(gezogeneKarten)) {
+
+			if (KartenCheck.checkEinPaar(gezogeneKarten) && !KartenCheck.checkTriple(gezogeneKarten)
+					&& !KartenCheck.checkTwoPair(gezogeneKarten)) {
 				einPaar++;
 			}
-			if (KartenCheck.checkTriple(gezogeneKarten) && !KartenCheck.checkPoker(gezogeneKarten) && !KartenCheck.checkFullHouse(gezogeneKarten)) {
+			if (KartenCheck.checkTriple(gezogeneKarten) && !KartenCheck.checkPoker(gezogeneKarten)
+					&& !KartenCheck.checkFullHouse(gezogeneKarten)) {
 				tripple++;
 			}
 			if (KartenCheck.checkPoker(gezogeneKarten)) {
@@ -60,38 +63,47 @@ public class Main {
 			if (KartenCheck.checkAlleFarbenGleich(gezogeneKarten) && !KartenCheck.checkStraightFlush(gezogeneKarten)) {
 				flush++;
 			}
-			if (KartenCheck.checkStrasse(gezogeneKarten) && !KartenCheck.checkStraightFlush(gezogeneKarten) && !KartenCheck.checkRoyalFlush(gezogeneKarten)) {
+			if (KartenCheck.checkStrasse(gezogeneKarten) && !KartenCheck.checkStraightFlush(gezogeneKarten)
+					&& !KartenCheck.checkRoyalFlush(gezogeneKarten)) {
 				straight++;
 			}
 		}
-		
+
 		System.out.println("Es wurden 1.000.000 mal Karten gezogen.");
 		System.out.println("Davon waren folgende Kombinationen enthalten:");
 		System.out.println();
-		System.out.printf("Ein Paar: \t\t%d Mal vorgekommen. \t Dies entspricht %.4f%%", (int) einPaar, ((einPaar/1000000) * 100));
+		System.out.printf("Ein Paar: \t\t%d Mal vorgekommen. \t Dies entspricht %.4f%%", (int) einPaar,
+				((einPaar / 1000000) * 100));
 		System.out.println();
-		System.out.printf("Zwei Paar: \t\t%d Mal vorgekommen. \t\t Dies entspricht %.4f%%", (int) zweiPaar, ((zweiPaar/1000000) * 100));
+		System.out.printf("Zwei Paar: \t\t%d Mal vorgekommen. \t\t Dies entspricht %.4f%%", (int) zweiPaar,
+				((zweiPaar / 1000000) * 100));
 		System.out.println();
-		System.out.printf("Tripple: \t\t%d Mal vorgekommen. \t\t Dies entspricht %.4f%%", (int) tripple, ((tripple/1000000) * 100));
+		System.out.printf("Tripple: \t\t%d Mal vorgekommen. \t\t Dies entspricht %.4f%%", (int) tripple,
+				((tripple / 1000000) * 100));
 		System.out.println();
-		System.out.printf("Poker: \t\t\t%d Mal vorgekommen. \t\t Dies entspricht %.4f%%", (int) poker, ((poker/1000000) * 100));
+		System.out.printf("Poker: \t\t\t%d Mal vorgekommen. \t\t Dies entspricht %.4f%%", (int) poker,
+				((poker / 1000000) * 100));
 		System.out.println();
-		System.out.printf("Full House: \t\t%d Mal vorgekommen. \t\t Dies entspricht %.4f%%", (int) fullHouse, ((fullHouse/1000000) * 100));
+		System.out.printf("Full House: \t\t%d Mal vorgekommen. \t\t Dies entspricht %.4f%%", (int) fullHouse,
+				((fullHouse / 1000000) * 100));
 		System.out.println();
-		System.out.printf("Royal Flush: \t\t%d Mal vorgekommen. \t\t Dies entspricht %.4f%%", (int) royalFlush, ((royalFlush/1000000) * 100));
+		System.out.printf("Royal Flush: \t\t%d Mal vorgekommen. \t\t Dies entspricht %.4f%%", (int) royalFlush,
+				((royalFlush / 1000000) * 100));
 		System.out.println();
-		System.out.printf("Straight Flush: \t%d Mal vorgekommen. \t\t Dies entspricht %.4f%%", (int) straightFlush, ((straightFlush/1000000) * 100));
+		System.out.printf("Straight Flush: \t%d Mal vorgekommen. \t\t Dies entspricht %.4f%%", (int) straightFlush,
+				((straightFlush / 1000000) * 100));
 		System.out.println();
-		System.out.printf("Flush: \t\t\t%d Mal vorgekommen. \t\t Dies entspricht %.4f%%", (int) flush, ((flush/1000000) * 100));
+		System.out.printf("Flush: \t\t\t%d Mal vorgekommen. \t\t Dies entspricht %.4f%%", (int) flush,
+				((flush / 1000000) * 100));
 		System.out.println();
-		System.out.printf("Straight: \t\t%d Mal vorgekommen. \t\t Dies entspricht %.4f%%", (int) straight, ((straight/1000000) * 100));
+		System.out.printf("Straight: \t\t%d Mal vorgekommen. \t\t Dies entspricht %.4f%%", (int) straight,
+				((straight / 1000000) * 100));
 		System.out.println();
-		
+
 		endDateTimeOfTest = (int) (System.currentTimeMillis() / 1000L);
-		
-		
+
 	}
-	
+
 	public static void check(int[] karten) {
 		if (KartenCheck.checkEinPaar(karten) && !KartenCheck.checkTriple(karten) && !KartenCheck.checkTwoPair(karten)) {
 			System.out.println("Es ist ein Paar vorhanden.");
@@ -117,20 +129,19 @@ public class Main {
 		if (KartenCheck.checkAlleFarbenGleich(karten) && !KartenCheck.checkStraightFlush(karten)) {
 			System.out.println("Alle Farben sind gleich.");
 		}
-		if (KartenCheck.checkStrasse(karten) && !KartenCheck.checkStraightFlush(karten) && !KartenCheck.checkRoyalFlush(karten)) {
+		if (KartenCheck.checkStrasse(karten) && !KartenCheck.checkStraightFlush(karten)
+				&& !KartenCheck.checkRoyalFlush(karten)) {
 			System.out.println("Es ist eine Straße vorhanden.");
 		}
 	}
-	
+
 	public static void main(String[] args) {
-		
-		int id = 0;
-		try {
-			id = MySQLConnection.getHighestId();
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
-		Results r = new Results(beginDateTimeOfTest, endDateTimeOfTest,id, einPaar, tripple, poker, zweiPaar, flush, straightFlush, royalFlush, fullHouse);
+
+		/*
+		 * int id = 0; try { id = MySQLConnection.getHighestId(); } catch (IOException
+		 * e1) { e1.printStackTrace(); }
+		 */
+
 		String name = "";
 		@SuppressWarnings("resource")
 		Scanner s = new Scanner(System.in);
@@ -141,7 +152,9 @@ public class Main {
 		registrationDate = (int) (System.currentTimeMillis() / 1000L);
 		Main m = new Main();
 		m.ziehen();
-		Users u = new Users(id, name, registrationDate);
+		Results r = new Results(beginDateTimeOfTest, endDateTimeOfTest, 1, einPaar, tripple, poker, zweiPaar, flush,
+				straightFlush, royalFlush, fullHouse);
+		Users u = new Users(1, name, registrationDate);
 		try {
 			MySQLConnection.run(u, r);
 		} catch (Exception e) {
